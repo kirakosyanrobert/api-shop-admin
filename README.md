@@ -1,4 +1,4 @@
-# PickBazar Documentation
+# Ecommerce app Documentation
 
 # Introduction
 
@@ -44,7 +44,7 @@ We have used monorepo folder structure with Yarn Workspace. In our template we h
 For getting started with the template you have to follow the below procedure. First navigate to the `pickbazar` directory. Then run below command for getting started with specific part.
 
 ```bash
-# on pickbazar directory
+# on p.....ar directory
 yarn
 ```
 
