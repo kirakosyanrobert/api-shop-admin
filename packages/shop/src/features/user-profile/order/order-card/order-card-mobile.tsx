@@ -63,11 +63,11 @@ const OrderCard: React.FC<MobileOrderCardProps> = ({
   }
   return (
     <>
-      <Collapse
+      <Collapse 
         accordion={true}
         className={addAllClasses.join(' ')}
         defaultActiveKey="active"
-        expandIcon={() => {}}
+        expandIcon={() => null}
       >
         {orders.map((order: any) => (
           <Panel

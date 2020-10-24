@@ -1,7 +1,7 @@
 {
   "build": {
     "env": {
-      "REACT_APP_API_URL": "https://vercel.com/kirakosyanrobert/pickbazar/186ohcr39/admin/graphql"
+      "REACT_APP_API_URL": "https://pickbazar-api-pb31pc6k9.vercel.app/admin/graphql"
     }
   }
 }
