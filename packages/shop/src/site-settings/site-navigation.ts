@@ -60,11 +60,11 @@ export const AUTHORIZED_MENU_ITEMS = [
     defaultMessage: 'Checkout',
     href: CHECKOUT_PAGE,
   },
-  {
-    id: 'alternativeCheckout',
-    href: CHECKOUT_PAGE_TWO,
-    defaultMessage: 'Checkout Alternative',
-  },
+  // {
+  //   id: 'alternativeCheckout',
+  //   href: CHECKOUT_PAGE_TWO,
+  //   defaultMessage: 'Checkout Alternative',
+  // },
   ORDER_MENU_ITEM,
   {
     id: 'nav.order_received',

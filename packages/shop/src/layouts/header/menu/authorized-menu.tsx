@@ -26,6 +26,6 @@ export const AuthorizedMenu: React.FC<Props> = ({ onLogout }) => {
           </span>
         </a>
       </div>
-    </>
+    </> 
   );
 };

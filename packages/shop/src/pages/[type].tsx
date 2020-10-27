@@ -71,7 +71,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
             </SidebarSection>
             <ContentSection>
               <div ref={targetRef}>
-                <Products
+                <Products 
                   type={PAGE_TYPE}
                   deviceType={deviceType}
                   fetchLimit={20}

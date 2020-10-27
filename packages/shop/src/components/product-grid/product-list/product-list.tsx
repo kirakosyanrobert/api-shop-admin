@@ -18,6 +18,9 @@ import { FormattedMessage } from 'react-intl';
 import { Button } from 'components/button/loadmore-button';
 import { GET_PRODUCTS } from 'graphql/query/products.query';
 
+// ADDED Card
+import { ProductCard } from 'components/product-card/product-card-four';
+
 const ErrorMessage = dynamic(() =>
   import('components/error-message/error-message')
 );
@@ -34,6 +37,7 @@ const FurnitureCard = dynamic(
 const MedicineCard = dynamic(
   import('components/product-card/product-card-five/product-card-five')
 );
+
 
 type ProductsProps = {
   deviceType?: {
@@ -137,18 +141,19 @@ export const Products: React.FC<ProductsProps> = ({
         );
       default:
         return (
-          <GeneralCard
-            title={props.title}
-            description={props.description}
-            image={props.image}
-            weight={props.unit}
-            currency={CURRENCY}
-            price={props.price}
-            salePrice={props.salePrice}
-            discountInPercent={props.discountInPercent}
-            data={props}
-            deviceType={deviceType}
-          />
+          // <GeneralCard
+          //   title={props.title}
+          //   description={props.description}
+          //   image={props.image}
+          //   weight={props.unit}
+          //   currency={CURRENCY}
+          //   price={props.price}
+          //   salePrice={props.salePrice}
+          //   discountInPercent={props.discountInPercent}
+          //   data={props} 
+          //   deviceType={deviceType}
+          // />
+          <ProductCard data={props} />
         );
     }
   };

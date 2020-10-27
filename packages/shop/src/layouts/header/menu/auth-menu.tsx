@@ -17,7 +17,7 @@ const AuthMenu = ({ isAuthenticated, onJoin, onLogout, avatar }: Props) => {
       <FormattedMessage id="joinButton" defaultMessage="join" />
     </Button>
   ) : (
-    <Popover
+    <Popover 
       direction="right"
       className="user-pages-dropdown"
       handler={<img src={avatar} alt="user" />}
