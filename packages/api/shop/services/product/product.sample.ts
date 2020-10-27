@@ -8,12 +8,12 @@ const fetch = require('node-fetch');
       
 
 export async function createProductSamples() {
-  const data = await fetch('https://fakestoreapi.com/products?limit=20');
+  const data = await fetch('https://fakestoreapi.com/products?limit=30');
   const json: Product[] = await data.json();
 
   json.forEach(item => {
-    item.type = ProductType.MAKEUP,
-    item.slug = 'parfume',
+    item.type = ProductType.GROCERY,
+    item.slug = 'lime',
     item.unit = '12 pc(s)',
     item.salePrice = 0,
     item.discountInPercent = 0,
@@ -22,7 +22,7 @@ export async function createProductSamples() {
         id: 1,
         title: 'Fruits & Vegetables',
         slug: 'fruits-and-vegetables',
-        type: 'parfume',
+        type: 'lime',
         itemCount: 5
       }
     ],
