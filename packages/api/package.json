@@ -4,16 +4,18 @@
   "scripts": {
     "shop-dev": "ts-node-dev --respawn server.shop.ts",
     "admin": "ts-node-dev --respawn server.admin.ts",
-    "build": "rimraf dist && mkdir dist && tsc -b && copyfiles -u 1 src/ dist/",
+    "build": "prisma generate && rimraf dist && mkdir dist && tsc -b && copyfiles -u 1 src/ dist/",
     "serve": "cross-env NODE_ENV=production node dist/server.admin.js",
     "start": "cross-env NODE_ENV=production node dist/server.shop.js"
   },
-  "dependencies": {
+  "dependencies": { 
+    "@prisma/cli": "^2.10.0",
+    "@prisma/client": "^2.10.0",
     "apollo-server-express": "^2.16.1",
     "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
     "cross-env": "^7.0.2",
-    "express": "^4.17.1",
+    "express": "^4.17.1", 
     "fuse.js": "6.4.1",
     "graphql": "^15.3.0",
     "graphql-tools": "^6.0.16",
@@ -31,6 +33,9 @@
     "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0-pre.56",
     "typescript": "^3.9.7"
+  },
+  "prisma": {
+    "schema": "./prisma/schema.prisma"
   },
   "license": "ISC"
 }

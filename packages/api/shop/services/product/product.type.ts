@@ -1,4 +1,4 @@
-import { ObjectType, Field, ID } from 'type-graphql';
+import { ObjectType, Field, ID, Int } from 'type-graphql';
 import { ProductType } from './product.enum';
 import Category from '../category/category.type';
 import Gallery from './gallery.type';
@@ -33,7 +33,7 @@ export class Meta {
 
 @ObjectType()
 export class Social {
-  @Field(() => ID)
+  @Field(() => ID) 
   id: string;
 
   @Field()
@@ -52,7 +52,7 @@ export class Author {
   name: string;
 
   @Field()
-  avatar: string;
+  avatar: string; 
 
   @Field()
   bio: string;
@@ -69,14 +69,23 @@ export class Author {
 
 @ObjectType()
 export default class Product {
+  @Field(() => ID)
+  id: string;
+
   @Field()
-  id: number;
+  createdAt: Date;
+
+  @Field()
+  updatedAt: Date;
 
   @Field()
   slug: string;
 
   @Field()
   title: string;
+
+  @Field()
+  description: string;
 
   @Field(() => ProductType)
   type: ProductType;
@@ -94,9 +103,6 @@ export default class Product {
   gallery: Gallery[];
 
   @Field()
-  description: string;
-
-  @Field()
   price: number;
 
   @Field()
@@ -111,9 +117,21 @@ export default class Product {
   @Field(() => Meta, { nullable: true })
   meta?: Meta;
 
-  @Field()
-  createdAt: Date;
+  @Field(type => Int, { defaultValue: 1 })
+  per_unit: number;
+
+  @Field(type => Int)
+  quantity: number;
+
+  @Field(type => Int, { nullable: true })
+  views?: number;
+
+  @Field(type => Int, { nullable: true })
+  sales?: number;
 }
+
+
+
 
 // TODO: Need to change this in next update
 
@@ -128,3 +146,4 @@ export class ProductResponse extends PaginatedResponse(Product) {
 
   // you can add more fields here if you need
 }
+ 

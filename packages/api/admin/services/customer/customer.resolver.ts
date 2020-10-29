@@ -1,8 +1,12 @@
 import { Resolver, Query, Arg, ID, Int, Mutation } from "type-graphql";
+import { PrismaClient } from "@prisma/client"
 import Customer from "./customer.type";
 import loadCustomers from "../../data/customer.data";
 import search from "../../helpers/search";
 import { sortByHighestNumber, sortByLowestNumber } from "../../helpers/sorts";
+
+const prisma = new PrismaClient()
+ 
 @Resolver()
 export default class CustomerResolver {
   private readonly customersCollection: Customer[] = loadCustomers();
@@ -13,6 +17,7 @@ export default class CustomerResolver {
     @Arg("sortBy", type => String, { defaultValue: null }) sortBy: string,
     @Arg("limit", type => Int, { defaultValue: 7 }) limit: number
   ): Promise<Customer[] | undefined> {
+
     // as auth Customer. check from middleware.
     let customers = this.customersCollection;
 

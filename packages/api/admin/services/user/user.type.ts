@@ -2,20 +2,23 @@ import { Field, ID, ObjectType } from 'type-graphql';
 import Contact from './contact/contact.type';
 import Address from './address/address.type';
 import Card from './card/card.type';
-
+ 
 @ObjectType()
 export default class User {
   @Field(type => ID)
   id: string;
 
   @Field()
-  name: string;
-
-  @Field()
-  image: string;
+  createdAt: Date;
 
   @Field()
   email: string;
+
+  @Field()
+  name: string;
+ 
+  @Field()
+  image: string;
 
   @Field(type => [Address])
   addresses: Address[];
@@ -27,7 +30,4 @@ export default class User {
   card: Card[];
 
   password: string;
-
-  @Field()
-  creation_date: Date;
 }

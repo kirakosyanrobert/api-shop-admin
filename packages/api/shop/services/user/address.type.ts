@@ -1,16 +1,16 @@
-import { ObjectType, Field } from 'type-graphql';
+import { ObjectType, Field, ID } from 'type-graphql';
 
 @ObjectType()
 export default class Address {
-  @Field()
+  @Field(type => ID)
   id: string;
 
   @Field()
   type: string;
 
   @Field()
-  name: string;
-
+  title: string;
+ 
   @Field()
-  info: string;
+  location: string;
 }

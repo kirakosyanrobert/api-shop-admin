@@ -10,7 +10,7 @@ export default class Address {
 
   @Field()
   title: string;
-
+ 
   @Field()
   location: string;
 }

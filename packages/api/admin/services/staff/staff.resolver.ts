@@ -1,8 +1,13 @@
 import { Resolver, Query, Arg, ID, Mutation } from 'type-graphql';
+import { PrismaClient } from "@prisma/client"
+
 import Staff from './staff.type';
 import loadStaffs from '../../data/staff.data';
 import AddStaffInput from './staff.input_type';
 import search from '../../helpers/search';
+
+const prisma = new PrismaClient();
+
 @Resolver()
 export default class StaffResolver {
   private readonly staffsCollection: Staff[] = loadStaffs();

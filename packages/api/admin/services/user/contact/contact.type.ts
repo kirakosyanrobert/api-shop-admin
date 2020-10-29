@@ -11,3 +11,4 @@ export default class Contact {
   @Field()
   number: string;
 }
+ 
