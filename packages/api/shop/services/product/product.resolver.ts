@@ -3,6 +3,7 @@ import { createProductSamples } from './product.sample';
 import Product, { ProductResponse } from './product.type';
 import { filterItems, getRelatedItems } from '../../helpers/filter';
 import { PrismaClient } from "@prisma/client"
+import { ProductType } from './product.enum';
 const prisma = new PrismaClient()
 
 
@@ -18,9 +19,9 @@ export class ProductResolver {
     @Arg('text', { nullable: true }) text?: string,
     @Arg('category', { nullable: true }) category?: string
   ): Promise<ProductResponse> {
-    // const allProducts = await prisma.product.findMany({})
-    // console.log('prisma all products:: ', allProducts) 
- 
+    const allProducts = await prisma.product.findMany({})
+    console.log('prisma all products:: ', allProducts) 
+
     const total = this.items.length;
     const filteredData = filterItems(
       this.items,

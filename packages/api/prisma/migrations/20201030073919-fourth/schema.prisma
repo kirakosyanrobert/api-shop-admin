@@ -13,7 +13,7 @@ enum Role {
 }
 
 enum ProductType {
-  BOOK
+  BOOK 
   BAGS
   GROCERY
   MEDICINE
@@ -32,13 +32,12 @@ model User {
   email     String    @unique
   name      String
   role      Role     @default(USER)
-  image     String?   
+  image     String  
   password  String   
   addresses Address[] 
   contacts  Contact[] 
   card      Card[]    
 }
-
 
 model Address {
   id        String    @id @default(uuid())
@@ -49,8 +48,8 @@ model Address {
 
 model Contact {
   id        String    @id @default(uuid())
-  type      String?
-  number     String?
+  type      String
+  number     String
 }
 
 model Card {
@@ -70,24 +69,24 @@ model Meta {
   edition         String
   country         String
   languages       String[]
-  numberOfReader  String?
-  numberOfPage    String?
-  samplePDF       String?
+  numberOfReader  String
+  numberOfPage    String
+  samplePDF       String
 }
 
 model Social {
   id              String    @id @default(uuid())
   media           String    
-  profileLink     String?
+  profileLink     String
 }
 
 model Author {
   id              String    @id @default(uuid())
   name            String
-  avatar          String?
-  bio             String?
+  avatar          String
+  bio             String
   email           String
-  website         String?
+  website         String
   socials         Social[]
 }
 
@@ -106,25 +105,28 @@ model Category {
   itemCount Int?
 }
 
+
 model Product {
   id        String    @id @default(uuid())
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   slug      String
   title     String    
-  description      String?
+  description      String
   unit      String    
-  image     String?  
+  image     String
   gallery   Gallery[]
   price  Int   
-  salePrice Int?
-  discountInPercent Int?
-  per_unit Int?
-  quantity Int?
+  salePrice Int
+  discountInPercent Int
+  per_unit Int
+  quantity Int
   views Int?
   sales Int?
   author  Author?
   meta Meta?
-  type ProductType
+  type String
   categories  Category[] 
 }
+
+

@@ -206,7 +206,7 @@
       "model": "User",
       "field": "image",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
@@ -356,14 +356,14 @@
       "model": "Contact",
       "field": "type",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
       "model": "Contact",
       "field": "number",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateModel",
@@ -527,21 +527,21 @@
       "model": "Meta",
       "field": "numberOfReader",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
       "model": "Meta",
       "field": "numberOfPage",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
       "model": "Meta",
       "field": "samplePDF",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateModel",
@@ -602,7 +602,7 @@
       "model": "Social",
       "field": "profileLink",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateModel",
@@ -663,14 +663,14 @@
       "model": "Author",
       "field": "avatar",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
       "model": "Author",
       "field": "bio",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
@@ -684,7 +684,7 @@
       "model": "Author",
       "field": "website",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
@@ -952,7 +952,7 @@
       "model": "Product",
       "field": "description",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
@@ -966,7 +966,7 @@
       "model": "Product",
       "field": "image",
       "type": "String",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
@@ -987,28 +987,28 @@
       "model": "Product",
       "field": "salePrice",
       "type": "Int",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
       "model": "Product",
       "field": "discountInPercent",
       "type": "Int",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
       "model": "Product",
       "field": "per_unit",
       "type": "Int",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
       "model": "Product",
       "field": "quantity",
       "type": "Int",
-      "arity": "Optional"
+      "arity": "Required"
     },
     {
       "tag": "CreateField",
@@ -1042,7 +1042,7 @@
       "tag": "CreateField",
       "model": "Product",
       "field": "type",
-      "type": "ProductType",
+      "type": "String",
       "arity": "Required"
     },
     {

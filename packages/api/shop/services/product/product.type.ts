@@ -96,7 +96,7 @@ export default class Product {
   @Field()
   unit: string;
 
-  @Field()
+  @Field() 
   image: string;
 
   @Field(() => [Gallery])
@@ -143,7 +143,7 @@ export class ProductResponse extends PaginatedResponse(Product) {
     super();
     Object.assign(this, productResponse);
   }
-
+ 
   // you can add more fields here if you need
 }
  

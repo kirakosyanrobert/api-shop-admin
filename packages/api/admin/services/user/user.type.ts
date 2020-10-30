@@ -12,6 +12,9 @@ export default class User {
   createdAt: Date;
 
   @Field()
+  updatedAt: Date;
+
+  @Field()
   email: string;
 
   @Field()
