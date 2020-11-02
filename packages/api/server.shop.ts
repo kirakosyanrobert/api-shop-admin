@@ -2,6 +2,8 @@ import 'reflect-metadata';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
+import { PrismaClient } from "@prisma/client";
+ 
 import { UserResolver } from './shop/services/user/user.resolver';
 import { ProductResolver } from './shop/services/product/product.resolver';
 import { PaymentResolver } from './shop/services/payment/payment.resolver';
@@ -10,8 +12,16 @@ import { CouponResolver } from './shop/services/coupon/coupon.resolver';
 import { CategoryResolver } from './shop/services/category/category.resolver';
 import { VendorResolver } from './shop/services/vendors/vendors.resolver';
 const app: express.Application = express();
+
+
 const path = '/shop/graphql';
 const PORT = process.env.PORT || 4000;
+
+interface Context {
+  prisma: PrismaClient;
+}
+const prisma = new PrismaClient();
+
 const main = async () => {
   const schema = await buildSchema({
     resolvers: [
@@ -29,6 +39,7 @@ const main = async () => {
     introspection: true,
     playground: true,
     tracing: true,
+    context: (): Context => ({ prisma }),
   });
   apolloServer.applyMiddleware({ app, path });
 
@@ -37,4 +48,4 @@ const main = async () => {
   });
 };
 
-main();
+main().catch(err => console.log(err));

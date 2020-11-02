@@ -1,0 +1,10 @@
+export { AggregateGalleryArgs } from "./AggregateGalleryArgs";
+export { CreateGalleryArgs } from "./CreateGalleryArgs";
+export { DeleteGalleryArgs } from "./DeleteGalleryArgs";
+export { DeleteManyGalleryArgs } from "./DeleteManyGalleryArgs";
+export { FindFirstGalleryArgs } from "./FindFirstGalleryArgs";
+export { FindManyGalleryArgs } from "./FindManyGalleryArgs";
+export { FindOneGalleryArgs } from "./FindOneGalleryArgs";
+export { UpdateGalleryArgs } from "./UpdateGalleryArgs";
+export { UpdateManyGalleryArgs } from "./UpdateManyGalleryArgs";
+export { UpsertGalleryArgs } from "./UpsertGalleryArgs";

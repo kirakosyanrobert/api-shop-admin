@@ -3,6 +3,7 @@ import { ProductType } from './product.enum';
 import Category from '../category/category.type';
 import Gallery from './gallery.type';
 import PaginatedResponse from '../../helpers/paginated-response';
+// import { Product as BaseProduct } from '@generated/type-graphql'
 
 @ObjectType()
 export class Meta {

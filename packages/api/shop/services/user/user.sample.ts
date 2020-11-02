@@ -4,10 +4,13 @@ import User from "./user.type";
 const loadUsers = (): User[] => {
   return plainToClass(User, [
     {
-      id: 1,
+      id: "1",
       name: "Jhon Doe Smith",
+      createdAt: new Date(),
+      updatedAt:  new Date(), 
       email: "jhondDoe@demo.com",
-      address: [
+      password: '1234', 
+      addresses: [
         {
           id: "12312",
           type: "primary",
@@ -65,10 +68,13 @@ const loadUsers = (): User[] => {
       ]
     },
     {
-      id: 2,
+      id: "2",
+      createdAt: new Date(),
+      updatedAt:  new Date(),
       name: "Jonathon Parker Doe ",
       email: "jpdoe@demo.com",
-      address: [
+      password: '1234',
+      addresses: [
         {
           id: "28764",
           type: "primary",

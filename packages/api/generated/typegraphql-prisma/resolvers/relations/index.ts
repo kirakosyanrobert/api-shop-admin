@@ -1,0 +1,13 @@
+export { AddressRelationsResolver } from "./Address/AddressRelationsResolver";
+export { AuthorRelationsResolver } from "./Author/AuthorRelationsResolver";
+export * from "./Author/args";
+export { CardRelationsResolver } from "./Card/CardRelationsResolver";
+export { CategoryRelationsResolver } from "./Category/CategoryRelationsResolver";
+export { ContactRelationsResolver } from "./Contact/ContactRelationsResolver";
+export { GalleryRelationsResolver } from "./Gallery/GalleryRelationsResolver";
+export { MetaRelationsResolver } from "./Meta/MetaRelationsResolver";
+export { ProductRelationsResolver } from "./Product/ProductRelationsResolver";
+export * from "./Product/args";
+export { SocialRelationsResolver } from "./Social/SocialRelationsResolver";
+export { UserRelationsResolver } from "./User/UserRelationsResolver";
+export * from "./User/args";

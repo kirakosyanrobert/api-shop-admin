@@ -38,6 +38,7 @@ export async function getServerSideProps({ params }) {
   };
 }
 const ProductDetailsPage = ({ data, deviceType }: Props) => {
+  // console.log('IN______SHOP_____ ::', data.product) 
   let content = (
     <ProductDetails product={data.product} deviceType={deviceType} />
   );

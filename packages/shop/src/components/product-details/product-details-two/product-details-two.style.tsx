@@ -377,7 +377,7 @@ export const Avatar = styled.div`
   }
 `;
 
-export const SocialNetworks = styled.div`
+export const Networks = styled.div`
   display: flex;
   align-items: center;
   margin-top: 20px;

@@ -9,7 +9,7 @@ export default class User {
   id: string;
 
   @Field()
-  createdAt: Date;
+  createdAt: Date; 
 
   @Field()
   updatedAt: Date;

@@ -1,0 +1,10 @@
+export { AggregateAddressArgs } from "./AggregateAddressArgs";
+export { CreateAddressArgs } from "./CreateAddressArgs";
+export { DeleteAddressArgs } from "./DeleteAddressArgs";
+export { DeleteManyAddressArgs } from "./DeleteManyAddressArgs";
+export { FindFirstAddressArgs } from "./FindFirstAddressArgs";
+export { FindManyAddressArgs } from "./FindManyAddressArgs";
+export { FindOneAddressArgs } from "./FindOneAddressArgs";
+export { UpdateAddressArgs } from "./UpdateAddressArgs";
+export { UpdateManyAddressArgs } from "./UpdateManyAddressArgs";
+export { UpsertAddressArgs } from "./UpsertAddressArgs";

@@ -13,7 +13,7 @@ export default class User {
   createdAt: Date;
 
   @Field()
-  updatedAt: Date;
+  updatedAt: Date; 
 
   @Field()
   email: string;

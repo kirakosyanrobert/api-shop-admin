@@ -3,9 +3,14 @@ import { createProductSamples } from './product.sample';
 import Product, { ProductResponse } from './product.type';
 import { filterItems, getRelatedItems } from '../../helpers/filter';
 import { PrismaClient } from "@prisma/client"
-import { ProductType } from './product.enum';
 const prisma = new PrismaClient()
 
+import {
+  Product as BaseProduct,
+  ProductType as BaseProductType
+ } from '../../../generated/typegraphql-prisma'
+
+   
 
 @Resolver()
 export class ProductResolver {
@@ -19,8 +24,33 @@ export class ProductResolver {
     @Arg('text', { nullable: true }) text?: string,
     @Arg('category', { nullable: true }) category?: string
   ): Promise<ProductResponse> {
-    const allProducts = await prisma.product.findMany({})
-    console.log('prisma all products:: ', allProducts) 
+    const products: BaseProduct[] = await prisma.product.findMany({
+      include: {
+        categories: true,
+        meta: true,
+        author: true,
+        gallery: true 
+      }
+    });
+    // if(products.length === 1) { 
+    //   const newProduct = await prisma.product.create({
+    //     data: {
+    //       slug: 'cherry',
+    //       title: 'Cherry',
+    //       description: 'A cherry is the fruit of many plants....',
+    //       unit: '0.5 lb',
+    //       image: 'https://res.cloudinary.com/redq-inc/image/upload/c_fit,q_auto:best,w_300/v1589614569/pickbazar/grocery/RedCherries_zylnoo.jpg',
+    //       price: 200,
+    //       salePrice: 150,
+    //       discountInPercent: 25,
+    //       per_unit: 200,
+    //       quantity: 1500,
+    //       type: BaseProductType.GROCERY,
+    //     }
+    //   })
+    // } 
+
+    console.log('prisma all products:: ', products) 
 
     const total = this.items.length;
     const filteredData = filterItems(
@@ -41,8 +71,18 @@ export class ProductResolver {
   async product(
     @Arg('slug', (type) => String) slug: string
   ): Promise<Product | undefined> {
-    return await this.items.find((item) => item.slug === slug);
-  }
+    // const products: BaseProduct[] = await prisma.product.findMany({
+    //   include: {
+    //     categories: true,
+    //     meta: true,
+    //     author: true,
+    //     gallery: true 
+    //   }
+    // });  
+
+    //  console.log('prisma all products:: ', products) 
+    return this.items.find((item) => item.slug === slug); 
+  } 
 
   @Query(() => [Product], { description: 'Get the Related products' })
   async relatedProducts(
