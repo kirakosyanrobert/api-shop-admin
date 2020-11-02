@@ -1,23 +1,25 @@
-import { Resolver, Query, Arg, Int } from 'type-graphql';
-import loadCategories from './category.sample';
-import Category from './category.type';
+import { Resolver, Query, Arg, Int, ID } from 'type-graphql';
+import { Category } from '../../../generated/typegraphql-prisma';
+import { PrismaClient } from "@prisma/client"
+const prisma = new PrismaClient()
 
 @Resolver()
 export class CategoryResolver {
-  private readonly items: Category[] = loadCategories();
 
   @Query(() => [Category], { description: 'Get all the categories' })
   async categories(
     @Arg('type', type => String) type: string
   ): Promise<Category[]> {
-    return await this.items.filter(item => item.type === type);
+    const categories: Category[] = await prisma.category.findMany({});
+    return await categories.filter(item => item.type === type);
     // return await this.items;
   }
 
   @Query(() => Category)
   async category(
-    @Arg('id', type => Int) id: number
+    @Arg('id', type => ID) id: string
   ): Promise<Category | undefined> {
-    return await this.items.find(item => item.id === id);
+    const categories: Category[] = await prisma.category.findMany({});
+    return await categories.find(item => item.id === id);
   }
 }

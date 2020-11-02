@@ -1,5 +1,5 @@
 import { InputType, Field } from 'type-graphql';
-import { ProductType } from './product.enum';
+import { ProductType } from '../../../generated/typegraphql-prisma';
 
 @InputType()
 class ProductSearchInput {
