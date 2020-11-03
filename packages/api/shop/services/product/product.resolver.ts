@@ -1,19 +1,23 @@
-import { Resolver, Query, Arg, Int } from 'type-graphql';
-import { ProductResponse } from './product.type';
-import { filterItems, getRelatedItems } from '../../helpers/filter';
+import { Resolver, Query, Arg, Int } from 'type-graphql'
 import { PrismaClient } from "@prisma/client"
+
+import { ProductResponse } from './product.types'
+import { filterItems, getRelatedItems } from '../../helpers/filter'
+
 const prisma = new PrismaClient()
 
 import {
   Product,
+  ProductType,
+  ProductCreateOneWithoutCategoriesInput
  } from '../../../generated/typegraphql-prisma'
 
-   
+    
 
 @Resolver()
 export class ProductResolver {
-  @Query(() => [Product])
-  async products(
+  @Query(() => ProductResponse)
+  async products( 
     @Arg('limit', (type) => Int, { defaultValue: 10 }) limit: number,
     @Arg('offset', (type) => Int, { defaultValue: 0 }) offset: number,
     @Arg('type', { nullable: true }) type?: string,
@@ -28,12 +32,12 @@ export class ProductResolver {
         gallery: true 
       }
     });
-    // if(products.length === 1) { 
+    // if(products.length > 1) { 
     //   const newProduct = await prisma.product.create({
     //     data: {
-    //       slug: 'cherry',
-    //       title: 'Cherry',
-    //       description: 'A cherry is the fruit of many plants....',
+    //       slug: 'limon',
+    //       title: 'Limon',
+    //       description: 'A Limon is the fruit of many plants....',
     //       unit: '0.5 lb',
     //       image: 'https://res.cloudinary.com/redq-inc/image/upload/c_fit,q_auto:best,w_300/v1589614569/pickbazar/grocery/RedCherries_zylnoo.jpg',
     //       price: 200,
@@ -41,22 +45,26 @@ export class ProductResolver {
     //       discountInPercent: 25,
     //       per_unit: 200,
     //       quantity: 1500,
-    //       type: BaseProductType.GROCERY,
+    //       type: ProductType.GROCERY,
+    //       categories: {
+    //         connect: { id: '0f28b3ad-1deb-4ecd-be50-fa50471c5b55' }
+    //       } 
     //     }
     //   })
     // } 
-
-    console.log('prisma all products:: ', products) 
+ 
+    // console.log('prisma all products:: ', products) 
 
     const total = products.length;
     const filteredData = filterItems(
       products,
       limit,
-      offset,
+      offset, 
       text,
-      type,
+      type?.toLocaleUpperCase(),
       category
     );
+    // console.log('API______API_____API', filteredData)
     return new ProductResponse({
       total: total,
       ...filteredData, 

@@ -18,13 +18,13 @@ import {
 import { Plus } from 'assets/icons/Plus';
 import * as icons from 'assets/icons/category-icons';
 import NoResult from 'components/NoResult/NoResult';
-
+ 
 const GET_CATEGORIES = gql`
   query getCategories($type: String, $searchBy: String) {
     categories(type: $type, searchBy: $searchBy) {
       id
       icon
-      name
+      title
       slug
       type
     }
@@ -48,7 +48,7 @@ const Row = withStyle(Rows, () => ({
 }));
 
 const categorySelectOptions = [
-  { value: 'grocery', label: 'Grocery' },
+  { value: 'GROCERY', label: 'Grocery' },
   { value: 'women-cloths', label: 'Women Cloth' },
   { value: 'bags', label: 'Bags' },
   { value: 'makeup', label: 'Makeup' },

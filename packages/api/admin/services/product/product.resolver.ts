@@ -1,22 +1,32 @@
 import { Resolver, Query, Arg, Args, Mutation } from 'type-graphql';
-import loadProducts from '../../data/product.data';
-import Product from './product.type';
-import Products from './products.type';
-import GetProductsArgs from './product.args_type';
-import AddProductInput from './product.input_type';
+import { PrismaClient } from "@prisma/client"
+
+import { Product, ProductCreateInput } from '../../../generated/typegraphql-prisma';
+import { ProductsConnection, GetProductsArgs } from './product.types';
+ 
 import search from '../../helpers/search';
 import shuffle from '../../helpers/shuffle';
 import { sortByHighestNumber, sortByLowestNumber } from '../../helpers/sorts';
+
+const prisma = new PrismaClient()
+ 
+
 @Resolver()
 export default class ProductResolver {
-  private readonly productsCollection: Product[] = loadProducts();
-
-  @Query((returns) => Products, { description: 'Get all the products' })
+  @Query((returns) => ProductsConnection, { description: 'Get all the products' })
   async products(
     @Args()
     { limit, offset, sortByPrice, type, searchText, category }: GetProductsArgs
-  ): Promise<Products> {
-    let products = this.productsCollection;
+  ): Promise<ProductsConnection> {
+    let products = await prisma.product.findMany({
+      include: {
+        categories: true,
+        meta: true,
+        author: true,
+        gallery: true 
+      }
+    }); 
+ 
     if (category) {
       products = products.filter((product) =>
         product.categories.find(
@@ -24,18 +34,20 @@ export default class ProductResolver {
         )
       );
     }
+
     if (type) {
       products = products.filter((product) => product.type === type);
     }
+
     if (sortByPrice) {
       if (sortByPrice === 'highestToLowest') {
         products = sortByHighestNumber(products, 'price');
-      }
+      }  
       if (sortByPrice === 'lowestToHighest') {
         products = sortByLowestNumber(products, 'price');
       }
     } else {
-      products = shuffle(products);
+      products = shuffle(products); 
     }
 
     // return await products.slice(0, limit);
@@ -44,22 +56,32 @@ export default class ProductResolver {
 
     return {
       items: products.slice(offset, offset + limit),
-      totalCount: this.productsCollection.length,
+      totalCount: products.length,
       hasMore,
     };
   }
 
   @Query(() => Product)
   async product(@Arg('slug') slug: string): Promise<Product | undefined> {
-    return await this.productsCollection.find((item) => item.slug === slug);
+    const products: Product[] = await prisma.product.findMany({
+      include: {
+        categories: true,
+        meta: true,
+        author: true,
+        gallery: true 
+      }
+    });  
+    return await products.find((item) => item.slug === slug);
   }
 
   @Mutation(() => Product, { description: 'Create Category' })
   async createProduct(
-    @Arg('product') product: AddProductInput
+    @Arg('data') data: ProductCreateInput
   ): Promise<Product> {
-    console.log(product, 'product');
+    const newProduct = await prisma.product.create({
+      data: data
+    })
 
-    return product;
+    return newProduct
   }
 }

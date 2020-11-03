@@ -24,13 +24,15 @@ import { GET_PRODUCTS } from 'graphql/query/products.query';
 import { GET_CATEGORIES } from 'graphql/query/category.query';
 import { ModalProvider } from 'contexts/modal/modal.provider';
 const Sidebar = dynamic(() => import('layouts/sidebar/sidebar'));
+
 const Products = dynamic(() =>
   import('components/product-grid/product-list/product-list')
 );
+
 const CartPopUp = dynamic(() => import('features/carts/cart-popup'), {
   ssr: false,
 });
-
+ 
 const CategoryPage: React.FC<any> = ({ deviceType }) => {
   const { query } = useRouter();
   const { elRef: targetRef, scroll } = useRefScroll({
@@ -44,7 +46,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
     }
   }, [query.text, query.category]);
   const PAGE_TYPE: any = query.type;
-  const page = sitePages[PAGE_TYPE];
+  const page = sitePages[PAGE_TYPE]; 
 
   return (
     <>
@@ -71,7 +73,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
             </SidebarSection>
             <ContentSection>
               <div ref={targetRef}>
-                <Products 
+                <Products   
                   type={PAGE_TYPE}
                   deviceType={deviceType}
                   fetchLimit={20}
@@ -87,7 +89,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
 };
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const apolloClient = initializeApollo();
-
+ 
   await apolloClient.query({
     query: GET_PRODUCTS,
     variables: {
@@ -101,7 +103,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     variables: {
       type: params.type,
     },
-  });
+  }); 
 
   return {
     props: {

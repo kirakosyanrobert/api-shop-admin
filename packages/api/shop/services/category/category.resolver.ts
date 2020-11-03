@@ -1,6 +1,8 @@
 import { Resolver, Query, Arg, Int, ID } from 'type-graphql';
-import { Category } from '../../../generated/typegraphql-prisma';
 import { PrismaClient } from "@prisma/client"
+
+import { Category } from '../../../generated/typegraphql-prisma';
+ 
 const prisma = new PrismaClient()
 
 @Resolver()
@@ -11,7 +13,22 @@ export class CategoryResolver {
     @Arg('type', type => String) type: string
   ): Promise<Category[]> {
     const categories: Category[] = await prisma.category.findMany({});
-    return await categories.filter(item => item.type === type);
+    // if(categories.length === 3) {
+    //   const newCat = await prisma.category.create({
+    //     data: {
+    //       title: 'Fruits & Vegetables',
+    //       slug: 'fruits-and-vegetables',
+    //       type: 'GROCERY',
+    //       icon: 'FruitsVegetable',
+    //       product: {
+    //         connect: { id: '921505fa-1442-4c61-8aa2-9937f2be2bc2' }
+    //       }
+    //     }
+    //   }) 
+    // }
+      //  console.log('Prisma All Categories :: ', categories)
+
+    return categories.filter(item => item.type === type);
     // return await this.items;
   }
 

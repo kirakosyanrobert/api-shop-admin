@@ -7,11 +7,12 @@ export const GET_CATEGORIES = gql`
       title
       slug
       icon
-      children {
-        id
-        title
-        slug
-      }
     }
   }
 `;
+
+// children {
+//   id
+//   title
+//   slug
+// } 

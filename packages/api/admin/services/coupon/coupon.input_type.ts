@@ -1,6 +1,6 @@
 import { InputType, Field, ID, Int } from 'type-graphql';
 import Coupon from './coupon.type';
-import AddProductInput from '../product/product.input_type';
+import { Product, ProductCreateInput } from '../../../generated/typegraphql-prisma';
 
 @InputType({ description: 'New coupon data' })
 export default class AddCouponInput implements Partial<Coupon> {
@@ -19,8 +19,8 @@ export default class AddCouponInput implements Partial<Coupon> {
   @Field()
   category: string;
 
-  @Field(type => [AddProductInput], { nullable: true })
-  products: AddProductInput[];
+  @Field(type => [ProductCreateInput], { nullable: true })
+  products: Product[];
 
   @Field()
   code: string;

@@ -374,10 +374,10 @@ export const Avatar = styled.div`
   img {
     width: 100%;
     height: auto;
-  }
+  } 
 `;
 
-export const Networks = styled.div`
+export const SocialNetworks = styled.div`
   display: flex;
   align-items: center;
   margin-top: 20px;

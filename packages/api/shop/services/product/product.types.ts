@@ -1,6 +1,7 @@
-import { ObjectType } from 'type-graphql';
+import { ObjectType, InputType, Field } from 'type-graphql';
+
 import PaginatedResponse from '../../helpers/paginated-response';
-import { Product } from '../../../generated/typegraphql-prisma'
+import { Product, ProductType } from '../../../generated/typegraphql-prisma'
 
 
 // TODO: Need to change this in next update
@@ -16,4 +17,21 @@ export class ProductResponse extends PaginatedResponse(Product) {
  
   // you can add more fields here if you need
 }
- 
+  
+@InputType()
+export class ProductSearchInput {
+  @Field({ nullable: true })
+  id?: number;
+
+  @Field()
+  type: ProductType;
+
+  @Field({ nullable: true })
+  category?: string;
+
+  @Field({ defaultValue: 0 })
+  offset: number;
+
+  @Field({ defaultValue: 10 })
+  limit: number;
+}

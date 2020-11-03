@@ -71,11 +71,11 @@ const GET_PRODUCTS = gql`
       type: $type
       sortByPrice: $sortByPrice
       searchText: $searchText
-      offset: $offset
+      offset: $offset 
     ) {
       items {
         id
-        name
+        title
         description
         image
         type
@@ -91,7 +91,7 @@ const GET_PRODUCTS = gql`
 `;
 
 const typeSelectOptions = [
-  { value: 'grocery', label: 'Grocery' },
+  { value: 'GROCERY', label: 'Grocery' },
   { value: 'women-cloths', label: 'Women Cloths' },
   { value: 'bags', label: 'Bags' },
   { value: 'makeup', label: 'Makeup' },
@@ -206,7 +206,7 @@ export default function Products() {
               </Row>
             </Col>
           </Header>
-
+ 
           <Row>
             {data ? (
               data.products && data.products.items.length !== 0 ? (
@@ -220,8 +220,8 @@ export default function Products() {
                     style={{ margin: '15px 0' }}
                   >
                     <Fade bottom duration={800} delay={index * 10}>
-                      <ProductCard
-                        title={item.name}
+                      <ProductCard  
+                        title={item.title}
                         weight={item.unit}
                         image={item.image}
                         currency={CURRENCY}
