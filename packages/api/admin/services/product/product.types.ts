@@ -1,6 +1,20 @@
-import { Field, Int, ArgsType } from 'type-graphql';
+import { ObjectType, Field, Int, ArgsType } from 'type-graphql';
+import { Product } from '../../../generated/typegraphql-prisma';
+
+@ObjectType()
+export class ProductsConnection {
+  @Field(type => [Product])
+  items: Product[];
+
+  @Field(type => Int)
+  totalCount: number;
+
+  @Field()
+  hasMore: boolean;
+}
+
 @ArgsType()
-export default class GetProductsArgs {
+export class GetProductsArgs {
   @Field(type => Int, { defaultValue: 12 })
   limit: number;
 
@@ -19,3 +33,4 @@ export default class GetProductsArgs {
   @Field({ nullable: true })
   category?: string;
 }
+

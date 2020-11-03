@@ -259,7 +259,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
             <Avatar>
               <img src={product.author.avatar} alt={product.author.name} />
             </Avatar>
-          ) : (
+          ) : ( 
             <InkPen />
           )}
 

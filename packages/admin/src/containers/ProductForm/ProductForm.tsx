@@ -1,6 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { v4 as uuidv4 } from 'uuid';
 import { useMutation, gql } from '@apollo/client';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { useDrawerDispatch } from 'context/DrawerContext';
@@ -35,7 +34,7 @@ const options = [
 ];
 
 const typeOptions = [
-  { value: 'grocery', name: 'Grocery', id: '1' },
+  { value: 'GROCERY', name: 'Grocery', id: '1' },
   { value: 'women-cloths', name: 'Women Cloths', id: '2' },
   { value: 'bags', name: 'Bags', id: '3' },
   { value: 'makeup', name: 'Makeup', id: '4' },
@@ -55,7 +54,7 @@ const GET_PRODUCTS = gql`
     ) {
       items {
         id
-        name
+        title
         image
         type
         price
@@ -69,10 +68,10 @@ const GET_PRODUCTS = gql`
   }
 `;
 const CREATE_PRODUCT = gql`
-  mutation createProduct($product: AddProductInput!) {
-    createProduct(product: $product) {
+  mutation createProduct($data: ProductCreateInput!) {
+    createProduct(data: $data) {
       id
-      name
+      title
       image
       slug
       type
@@ -81,9 +80,7 @@ const CREATE_PRODUCT = gql`
       description
       salePrice
       discountInPercent
-      # per_unit
       quantity
-      # creation_date
     }
   }
 `;
@@ -99,7 +96,7 @@ const AddProduct: React.FC<Props> = (props) => {
   const [tag, setTag] = useState([]);
   const [description, setDescription] = useState('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     register({ name: 'type' });
     register({ name: 'categories' });
     register({ name: 'image', required: true });
@@ -145,22 +142,24 @@ const AddProduct: React.FC<Props> = (props) => {
   };
   const onSubmit = (data) => {
     const newProduct = {
-      id: uuidv4(),
-      name: data.name,
-      type: data.type[0].value,
+      title: data.name,
+      type: 'GROCERY',
       description: data.description,
-      image: data.image && data.image.length !== 0 ? data.image : '',
+      image: data.image && data.image.length !== 0 ? data.image : 'https://s3.amazonaws.com/redqteam.com/pickbazar/kame_stir_fry.jpg',
       price: Number(data.price),
       unit: data.unit,
       salePrice: Number(data.salePrice),
       discountInPercent: Number(data.discountInPercent),
       quantity: Number(data.quantity),
-      slug: data.name,
-      creation_date: new Date(),
+      per_unit: 50, 
+      slug: data.name.toLowerCase(),
+      categories: {
+        connect: { id: '264ea20a-ea02-4ee0-a99e-79e85998cfc3' }
+      }
     };
     console.log(newProduct, 'newProduct data');
     createProduct({
-      variables: { product: newProduct },
+      variables: { data: newProduct },
     });
     closeDrawer();
   };

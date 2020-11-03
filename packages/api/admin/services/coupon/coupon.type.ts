@@ -1,5 +1,6 @@
 import { Field, ID, Int, ObjectType } from 'type-graphql';
-import Product from '../product/product.type';
+import { Product } from '../../../generated/typegraphql-prisma';
+
 @ObjectType()
 export default class Coupon {
   @Field(type => ID)

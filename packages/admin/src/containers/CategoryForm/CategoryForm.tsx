@@ -1,6 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { v4 as uuidv4 } from 'uuid';
 import { useMutation, gql } from '@apollo/client';
 import { useDrawerDispatch } from 'context/DrawerContext';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -24,28 +23,26 @@ const GET_CATEGORIES = gql`
     categories(type: $type, searchBy: $searchBy) {
       id
       icon
-      name
+      title
       slug
       type
     }
   }
-`;
+`; 
 const CREATE_CATEGORY = gql`
-  mutation createCategory($category: AddCategoryInput!) {
-    createCategory(category: $category) {
+  mutation createCategory($data: CategoryCreateWithoutProductInput!) {
+    createCategory(data: $data) {
       id
-      name
+      title
       type
       icon
-      # creation_date
       slug
-      # number_of_product
     }
   }
 `;
 
 const options = [
-  { value: 'grocery', name: 'Grocery', id: '1' },
+  { value: 'GROCERY', name: 'Grocery', id: '1' },
   { value: 'women-cloths', name: 'Women Cloths', id: '2' },
   { value: 'bags', name: 'Bags', id: '3' },
   { value: 'makeup', name: 'Makeup', id: '4' },
@@ -59,10 +56,12 @@ const AddCategory: React.FC<Props> = (props) => {
   ]);
   const { register, handleSubmit, setValue } = useForm();
   const [category, setCategory] = useState([]);
-  React.useEffect(() => {
+
+  useEffect(() => {
     register({ name: 'parent' });
     register({ name: 'image' });
   }, [register]);
+
   const [createCategory] = useMutation(CREATE_CATEGORY, {
     update(cache, { data: { createCategory } }) {
       const { categories } = cache.readQuery({
@@ -78,18 +77,18 @@ const AddCategory: React.FC<Props> = (props) => {
 
   const onSubmit = ({ name, slug, parent, image }) => {
     const newCategory = {
-      id: uuidv4(),
-      name: name,
-      type: parent[0].value,
+      title: name,
+      type: "GROCERY",
       slug: slug,
       icon: image,
-      creation_date: new Date(),
     };
     createCategory({
-      variables: { category: newCategory },
+      variables: {
+        data: newCategory,
+      }
     });
+
     closeDrawer();
-    console.log(newCategory, 'newCategory');
   };
   const handleChange = ({ value }) => {
     setValue('parent', value);
