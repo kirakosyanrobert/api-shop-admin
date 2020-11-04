@@ -1,5 +1,5 @@
 import { InputType, Field, ID } from 'type-graphql';
-import ProductInput from '../product/product.input';
+import {ProductCreateInput} from '../../../generated/typegraphql-prisma'; 
 
 @InputType()
 export default class OrderInput {
@@ -15,7 +15,7 @@ export default class OrderInput {
   payment: string;
 
   @Field()
-  schedule: string;
+  schedule: string; 
 
   @Field()
   quantity: number;
@@ -23,6 +23,6 @@ export default class OrderInput {
   @Field()
   price: number;
 
-  @Field(type => [ProductInput])
-  products: ProductInput[];
+  @Field(type => [ProductCreateInput])
+  products: ProductCreateInput[];
 }
