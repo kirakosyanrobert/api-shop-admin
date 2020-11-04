@@ -1,16 +1,14 @@
-import { Resolver, Query, Arg, Int } from 'type-graphql'
-import { PrismaClient } from "@prisma/client"
+import { Resolver, Query, Arg, Int, Ctx } from 'type-graphql'
 
 import { ProductResponse } from './product.types'
 import { filterItems, getRelatedItems } from '../../helpers/filter'
-
-const prisma = new PrismaClient()
-
+ 
 import {
   Product,
   ProductType,
   ProductCreateOneWithoutCategoriesInput
  } from '../../../generated/typegraphql-prisma'
+import { Context } from '../../../types';
 
     
 
@@ -18,6 +16,7 @@ import {
 export class ProductResolver {
   @Query(() => ProductResponse)
   async products( 
+    @Ctx() { prisma }: Context,
     @Arg('limit', (type) => Int, { defaultValue: 10 }) limit: number,
     @Arg('offset', (type) => Int, { defaultValue: 0 }) offset: number,
     @Arg('type', { nullable: true }) type?: string,
@@ -73,7 +72,8 @@ export class ProductResolver {
 
   @Query(() => Product)
   async product(
-    @Arg('slug', (type) => String) slug: string
+    @Arg('slug', (type) => String) slug: string,
+    @Ctx() { prisma }: Context,
   ): Promise<Product | undefined> {
     const products: Product[] = await prisma.product.findMany({
       include: {
@@ -90,6 +90,7 @@ export class ProductResolver {
 
   @Query(() => [Product], { description: 'Get the Related products' })
   async relatedProducts(
+    @Ctx() { prisma }: Context,
     @Arg('slug', (slug) => String) slug: string,
     @Arg('type', { nullable: true }) type?: string
   ): Promise<any> {

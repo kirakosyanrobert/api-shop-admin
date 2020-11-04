@@ -167,7 +167,7 @@ export default function CustomCarousel({
         {...props}
         // use dir ltr when rtl true
       >
-        {data.map((item: any, index: number) => {
+        {data && data.length > 0 && data.map((item: any, index: number) => {
           if (component) return component(item);
           return (
             <div style={{ padding: '0 15px', overflow: 'hidden' }} key={index}>

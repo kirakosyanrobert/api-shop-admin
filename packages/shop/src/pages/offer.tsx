@@ -36,7 +36,7 @@ type GiftCardProps = {
     desktop: boolean;
   };
 };
-
+ 
 const GiftCardPage: NextPage<GiftCardProps> = ({ deviceType }) => {
   const { data, error } = useQuery(GET_COUPON);
   if (error) return <ErrorMessage message={error.message} />;

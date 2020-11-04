@@ -58,12 +58,12 @@ const PaymentGroup: React.FunctionComponent<PaymentGroupProps> = ({
   // Handle onChange Func
   const handleChange = (item: any) => {
     onChange(item);
-  };
+  }; 
   return (
     <>
       {/* {deviceType === 'desktop' && ( */}
       <Header>
-        {items.length !== 0 && (
+        {items && items.length !== 0 && (
           <SavedCard>
             <FormattedMessage id="savedCardsId" defaultMessage="Saved Cards" />
           </SavedCard>
@@ -82,7 +82,7 @@ const PaymentGroup: React.FunctionComponent<PaymentGroupProps> = ({
         </Button>
       </Header>
       <PaymentCardList>
-        <Carousel
+        {/* <Carousel
           deviceType={deviceType}
           autoPlay={false}
           infinite={false}
@@ -95,10 +95,10 @@ const PaymentGroup: React.FunctionComponent<PaymentGroupProps> = ({
               {...item}
             />
           )}
-        />
+        /> */}
       </PaymentCardList>
 
-      {items.mobileWallet === true || items.cashOnDelivery === true ? (
+      {items && items.mobileWallet === true || items?.cashOnDelivery === true ? (
         <OtherPayOption>
           {/* Mobile Wallet */}
           {items.mobileWallet === true ? (
@@ -121,7 +121,7 @@ const PaymentGroup: React.FunctionComponent<PaymentGroupProps> = ({
           )}
 
           {/* Cash On Delivery */}
-          {items.cashOnDelivery === true ? (
+          {items && items.cashOnDelivery === true ? (
             <label
               htmlFor="cash-on-delivery"
               key="${name}-cash"

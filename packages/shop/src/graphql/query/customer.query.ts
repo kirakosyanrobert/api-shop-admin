@@ -1,18 +1,18 @@
 import { gql } from '@apollo/client';
 
 export const GET_LOGGED_IN_CUSTOMER = gql`
-  query getUser($id: String = "1") {
+  query getUser($id: String = "8a278415-015b-4cfd-97a9-12c2f8e4a721") {
     me(id: $id) {
       id
       name
       email
-      address {
+      addresses {
         id
         type
-        name
-        info
+        title
+        location  
       }
-      contact {
+      contacts {
         id
         type
         number
@@ -21,9 +21,10 @@ export const GET_LOGGED_IN_CUSTOMER = gql`
         id
         type
         cardType
-        name
+        title
         lastFourDigit
       }
     }
   }
 `;
+   

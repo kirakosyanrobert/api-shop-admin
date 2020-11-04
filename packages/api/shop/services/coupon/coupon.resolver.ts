@@ -8,11 +8,11 @@ export class CouponResolver {
 
   @Query(() => [Coupon], { description: 'Get all the Coupons' })
   async coupons(): Promise<Coupon[]> {
-    return await this.items;
+    return this.items;
   }
   @Mutation(() => Coupon)
   async applyCoupon(@Arg('code') code: string): Promise<Coupon> {
-    const coupon = await this.items.find(
+    const coupon = this.items.find(
       item => item.code.toLowerCase() === code.toLowerCase()
     );
 

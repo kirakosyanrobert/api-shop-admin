@@ -1,15 +1,14 @@
-import { Resolver, Query, Arg, Int, ID } from 'type-graphql';
-import { PrismaClient } from "@prisma/client"
+import { Resolver, Query, Arg, ID, Ctx } from 'type-graphql';
 
 import { Category } from '../../../generated/typegraphql-prisma';
+import { Context } from '../../../types';
  
-const prisma = new PrismaClient()
-
 @Resolver()
 export class CategoryResolver {
 
   @Query(() => [Category], { description: 'Get all the categories' })
   async categories(
+    @Ctx() { prisma }: Context,
     @Arg('type', type => String) type: string
   ): Promise<Category[]> {
     const categories: Category[] = await prisma.category.findMany({});
@@ -34,6 +33,7 @@ export class CategoryResolver {
 
   @Query(() => Category)
   async category(
+    @Ctx() { prisma }: Context,
     @Arg('id', type => ID) id: string
   ): Promise<Category | undefined> {
     const categories: Category[] = await prisma.category.findMany({});

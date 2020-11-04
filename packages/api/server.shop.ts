@@ -11,15 +11,13 @@ import { OrderResolver } from './shop/services/order/order.resolver';
 import { CouponResolver } from './shop/services/coupon/coupon.resolver';
 import { CategoryResolver } from './shop/services/category/category.resolver';
 import { VendorResolver } from './shop/services/vendors/vendors.resolver';
+import { Context } from './types';
 const app: express.Application = express();
 
 
 const path = '/shop/graphql';
 const PORT = process.env.PORT || 4000;
-
-interface Context {
-  prisma: PrismaClient;
-}
+ 
 const prisma = new PrismaClient();
 
 const main = async () => {
