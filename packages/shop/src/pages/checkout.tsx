@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { Modal } from '@redq/reuse-modal';
 import { SEO } from 'components/seo';
 import Checkout from 'features/checkouts/checkout-two/checkout-two';
-import { GET_LOGGED_IN_CUSTOMER } from 'graphql/query/customer.query';
+import { GET_LOGGED_IN_CUSTOMER } from 'graphql/query/customer.query'; 
 
 import { ProfileProvider } from 'contexts/profile/profile.provider';
 import { initializeApollo } from 'utils/apollo';
