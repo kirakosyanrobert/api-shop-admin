@@ -5,7 +5,7 @@ import { Modal } from '@redq/reuse-modal';
 import { SEO } from 'components/seo';
 import Checkout from 'features/checkouts/checkout-two/checkout-two';
 import { GET_LOGGED_IN_CUSTOMER } from 'graphql/query/customer.query'; 
-
+ 
 import { ProfileProvider } from 'contexts/profile/profile.provider';
 import { initializeApollo } from 'utils/apollo';
 
@@ -24,7 +24,7 @@ const CheckoutPage: NextPage<Props> = ({ deviceType }) => {
   if (error) return <div>{error.message}</div>;
   const token = 'true';
 
-  return (
+  return ( 
     <>
       <SEO title="Checkout - PickBazar" description="Checkout Details" />
       <ProfileProvider initData={data.me}>

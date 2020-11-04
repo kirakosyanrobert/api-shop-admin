@@ -1,11 +1,9 @@
 import { Resolver, Query, Arg, ID, Int, Mutation } from "type-graphql";
-import { PrismaClient } from "@prisma/client"
 import Customer from "./customer.type";
 import loadCustomers from "../../data/customer.data";
 import search from "../../helpers/search";
 import { sortByHighestNumber, sortByLowestNumber } from "../../helpers/sorts";
 
-const prisma = new PrismaClient()
  
 @Resolver()
 export default class CustomerResolver {

@@ -1,5 +1,4 @@
-import { Resolver, Query, Arg, Args, Mutation } from 'type-graphql';
-import { PrismaClient } from "@prisma/client"
+import { Resolver, Query, Arg, Args, Mutation, Ctx } from 'type-graphql';
 
 import { Product, ProductCreateInput } from '../../../generated/typegraphql-prisma';
 import { ProductsConnection, GetProductsArgs } from './product.types';
@@ -7,14 +6,14 @@ import { ProductsConnection, GetProductsArgs } from './product.types';
 import search from '../../helpers/search';
 import shuffle from '../../helpers/shuffle';
 import { sortByHighestNumber, sortByLowestNumber } from '../../helpers/sorts';
+import { Context } from '../../../types';
 
-const prisma = new PrismaClient()
- 
 
 @Resolver()
 export default class ProductResolver {
   @Query((returns) => ProductsConnection, { description: 'Get all the products' })
   async products(
+    @Ctx() { prisma }: Context,
     @Args()
     { limit, offset, sortByPrice, type, searchText, category }: GetProductsArgs
   ): Promise<ProductsConnection> {
@@ -62,7 +61,10 @@ export default class ProductResolver {
   }
 
   @Query(() => Product)
-  async product(@Arg('slug') slug: string): Promise<Product | undefined> {
+  async product(
+    @Arg('slug') slug: string,
+    @Ctx() { prisma }: Context,
+  ): Promise<Product | undefined> {
     const products: Product[] = await prisma.product.findMany({
       include: {
         categories: true,
@@ -71,11 +73,12 @@ export default class ProductResolver {
         gallery: true 
       }
     });  
-    return await products.find((item) => item.slug === slug);
+    return products.find((item) => item.slug === slug);
   }
 
   @Mutation(() => Product, { description: 'Create Category' })
   async createProduct(
+    @Ctx() { prisma }: Context,
     @Arg('data') data: ProductCreateInput
   ): Promise<Product> {
     const newProduct = await prisma.product.create({

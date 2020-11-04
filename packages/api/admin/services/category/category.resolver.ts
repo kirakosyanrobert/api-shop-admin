@@ -1,16 +1,15 @@
-import { Resolver, Query, Arg, ID, Mutation } from 'type-graphql';
-import { PrismaClient } from "@prisma/client"
+import { Resolver, Query, Arg, ID, Mutation, Ctx } from 'type-graphql';
 
 import { Category, CategoryCreateWithoutProductInput } from '../../../generated/typegraphql-prisma';
  
 import search from '../../helpers/search';
+import { Context } from '../../../types';
 
-const prisma = new PrismaClient() 
-
-@Resolver()
+@Resolver() 
 export default class CategoryResolver {
   @Query(() => [Category], { description: 'Get all the categories' })
   async categories(
+    @Ctx() { prisma }: Context,
     @Arg('type', { nullable: true }) type?: string,
     @Arg('searchBy', { defaultValue: '' }) searchBy?: string
   ): Promise<Category[]> {
@@ -24,6 +23,7 @@ export default class CategoryResolver {
 
   @Query(() => Category)
   async category(
+    @Ctx() { prisma }: Context,
     @Arg('id', type => ID) id: string
   ): Promise<Category | null> {
     const category = await prisma.category.findOne({
@@ -34,6 +34,7 @@ export default class CategoryResolver {
 
   @Mutation(() => Category, { description: 'Create Category' })
   async createCategory(
+    @Ctx() { prisma }: Context,
     @Arg('data') data: CategoryCreateWithoutProductInput
   ): Promise<Category> {
       const newCategory = await prisma.category.create({
