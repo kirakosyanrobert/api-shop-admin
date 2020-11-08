@@ -1,7 +1,7 @@
 import { ObjectType, InputType, Field } from 'type-graphql';
 
 import PaginatedResponse from '../../helpers/PaginatedResponse';
-import { Product, ProductType } from '../../../prisma/generated'
+import { Product, ProductType } from '@generated/type-graphql'
 
 
 // TODO: Need to change this in next update

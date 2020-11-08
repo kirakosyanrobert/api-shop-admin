@@ -1,6 +1,6 @@
 import { Resolver, Query, Arg, Int, Mutation, Ctx } from 'type-graphql';
 
-import { User, UserCreateInput } from '../../../prisma/generated';
+import { User, UserCreateInput } from '@generated/type-graphql';
 import { Context } from '../../../types';
 
 

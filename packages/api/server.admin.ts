@@ -2,7 +2,8 @@ import 'reflect-metadata';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client'
+
 
 import ProductResolver from './admin/services/product/product.resolver';
 import CategoryResolver from './admin/services/category/category.resolver';
@@ -23,7 +24,7 @@ import {
   SocialRelationsResolver,
   AuthorRelationsResolver,
   GalleryRelationsResolver
-} from './prisma/generated'
+} from '@generated/type-graphql'
 
 const app: express.Application = express();
 const path = '/admin/graphql';

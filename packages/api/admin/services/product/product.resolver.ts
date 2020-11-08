@@ -1,6 +1,6 @@
 import { Resolver, Query, Arg, Args, Mutation, Ctx } from 'type-graphql';
 
-import { Product, ProductCreateInput } from '../../../prisma/generated';
+import { Product, ProductCreateInput } from '@generated/type-graphql';
 import { ProductsConnection, GetProductsArgs } from './product.types';
  
 import search from '../../helpers/search';

@@ -7,7 +7,7 @@ import {
   Product,
   ProductType,
   ProductCreateOneWithoutCategoriesInput
- } from '../../../prisma/generated'
+ } from '@generated/type-graphql';
 import { Context } from '../../../types';
 
     
