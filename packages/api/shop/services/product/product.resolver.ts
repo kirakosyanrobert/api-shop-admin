@@ -7,7 +7,7 @@ import {
   Product,
   ProductType,
   ProductCreateOneWithoutCategoriesInput
- } from '../../../generated/typegraphql-prisma'
+ } from '@generated/type-graphql'
 import { Context } from '../../../types';
 
     
@@ -83,7 +83,7 @@ export class ProductResolver {
         gallery: true 
       }
     });  
-
+ 
     //  console.log('prisma all products:: ', products) 
     return products.find((item) => item.slug === slug); 
   } 

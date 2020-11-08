@@ -1,5 +1,5 @@
 import { ObjectType, Field } from 'type-graphql';
-import {Category, ProductType} from '../../../generated/typegraphql-prisma';
+import {Category, ProductType} from '@generated/type-graphql';
 
 @ObjectType()
 export default class OrderProduct {

@@ -12,25 +12,53 @@ import { CouponResolver } from './shop/services/coupon/coupon.resolver';
 import { CategoryResolver } from './shop/services/category/category.resolver';
 import { VendorResolver } from './shop/services/vendors/vendors.resolver';
 import { Context } from './types';
+
+import { 
+  UserRelationsResolver,
+  ProductRelationsResolver, 
+  CategoryRelationsResolver,
+  AddressRelationsResolver, 
+  ContactRelationsResolver,
+  CardRelationsResolver,
+  MetaRelationsResolver,
+  SocialRelationsResolver,
+  AuthorRelationsResolver,
+  GalleryRelationsResolver
+} from '@generated/type-graphql'
+
 const app: express.Application = express();
-
-
 const path = '/shop/graphql';
 const PORT = process.env.PORT || 4000;
  
 const prisma = new PrismaClient();
+
+const relations = [
+  UserRelationsResolver,
+  AddressRelationsResolver,
+  ProductRelationsResolver,
+  CategoryRelationsResolver,
+  ContactRelationsResolver,
+  CardRelationsResolver,
+  MetaRelationsResolver,
+  SocialRelationsResolver,
+  AuthorRelationsResolver,
+  GalleryRelationsResolver
+];
 
 const main = async () => {
   const schema = await buildSchema({
     resolvers: [
       UserResolver,
       ProductResolver,
+      ProductRelationsResolver,
       PaymentResolver,
       OrderResolver,
       CouponResolver,
       CategoryResolver,
       VendorResolver,
+      ...relations
     ],
+    validate: false
   });
   const apolloServer = new ApolloServer({
     schema,

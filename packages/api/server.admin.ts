@@ -12,12 +12,37 @@ import OrderResolver from './admin/services/order/order.resolver';
 import StaffResolver from './admin/services/staff/staff.resolver';
 import { Context } from './types';
 
+import { 
+  UserRelationsResolver,
+  ProductRelationsResolver, 
+  CategoryRelationsResolver,
+  AddressRelationsResolver, 
+  ContactRelationsResolver,
+  CardRelationsResolver,
+  MetaRelationsResolver,
+  SocialRelationsResolver,
+  AuthorRelationsResolver,
+  GalleryRelationsResolver
+} from '@generated/type-graphql'
+
 const app: express.Application = express();
 const path = '/admin/graphql';
 const PORT = process.env.PORT || 4000;
 
 const prisma = new PrismaClient();
 
+const relations = [
+  UserRelationsResolver,
+  AddressRelationsResolver,
+  ProductRelationsResolver,
+  CategoryRelationsResolver,
+  ContactRelationsResolver,
+  CardRelationsResolver,
+  MetaRelationsResolver,
+  SocialRelationsResolver,
+  AuthorRelationsResolver,
+  GalleryRelationsResolver
+];
 
 const main = async () => {
   const schema = await buildSchema({
@@ -28,6 +53,7 @@ const main = async () => {
       OrderResolver,
       CouponResolver,
       StaffResolver,
+      ...relations
     ],
     validate: false,
   });
