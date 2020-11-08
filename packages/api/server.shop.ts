@@ -24,7 +24,7 @@ import {
   SocialRelationsResolver,
   AuthorRelationsResolver,
   GalleryRelationsResolver
-} from '@generated/type-graphql'
+} from './prisma/generated'
 
 const app: express.Application = express();
 const path = '/shop/graphql';

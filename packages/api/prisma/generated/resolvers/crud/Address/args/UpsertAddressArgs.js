@@ -1,0 +1,34 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UpsertAddressArgs = void 0;
+const TypeGraphQL = require("type-graphql");
+const AddressCreateInput_1 = require("../../../inputs/AddressCreateInput");
+const AddressUpdateInput_1 = require("../../../inputs/AddressUpdateInput");
+const AddressWhereUniqueInput_1 = require("../../../inputs/AddressWhereUniqueInput");
+let UpsertAddressArgs = class UpsertAddressArgs {
+};
+__decorate([
+    TypeGraphQL.Field(_type => AddressWhereUniqueInput_1.AddressWhereUniqueInput, { nullable: false }),
+    __metadata("design:type", AddressWhereUniqueInput_1.AddressWhereUniqueInput)
+], UpsertAddressArgs.prototype, "where", void 0);
+__decorate([
+    TypeGraphQL.Field(_type => AddressCreateInput_1.AddressCreateInput, { nullable: false }),
+    __metadata("design:type", AddressCreateInput_1.AddressCreateInput)
+], UpsertAddressArgs.prototype, "create", void 0);
+__decorate([
+    TypeGraphQL.Field(_type => AddressUpdateInput_1.AddressUpdateInput, { nullable: false }),
+    __metadata("design:type", AddressUpdateInput_1.AddressUpdateInput)
+], UpsertAddressArgs.prototype, "update", void 0);
+UpsertAddressArgs = __decorate([
+    TypeGraphQL.ArgsType()
+], UpsertAddressArgs);
+exports.UpsertAddressArgs = UpsertAddressArgs;

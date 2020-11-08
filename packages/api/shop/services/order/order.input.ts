@@ -1,5 +1,5 @@
 import { InputType, Field, ID } from 'type-graphql';
-import {ProductCreateInput} from '@generated/type-graphql'; 
+import {ProductCreateInput} from '../../../prisma/generated'; 
 
 @InputType()
 export default class OrderInput {

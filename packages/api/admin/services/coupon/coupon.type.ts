@@ -1,5 +1,5 @@
 import { Field, ID, Int, ObjectType } from 'type-graphql';
-import { Product } from '@generated/type-graphql';
+import { Product } from '../../../prisma/generated';
 
 @ObjectType()
 export default class Coupon {

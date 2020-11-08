@@ -9,6 +9,8 @@ generator client {
 
 generator typegraphql {
   provider = "typegraphql-prisma"
+  output   = "../prisma/generated"
+  emitTranspiledCode = true
 }
   
 enum Role {

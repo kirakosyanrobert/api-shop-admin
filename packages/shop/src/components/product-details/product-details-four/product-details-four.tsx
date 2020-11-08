@@ -67,7 +67,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     <>
       <ProductDetailsWrapper className='product-card' dir='ltr'>
         {!isRtl && (
-          <ProductPreview>
+          <ProductPreview> 
             <CarouselWithCustomDots
               items={product.gallery}
               deviceType={deviceType}

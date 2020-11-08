@@ -1,5 +1,5 @@
 import { ObjectType, Field, Int, ArgsType } from 'type-graphql';
-import { Product } from '@generated/type-graphql';
+import { Product } from '../../../prisma/generated';
 
 @ObjectType()
 export class ProductsConnection {

@@ -1,6 +1,6 @@
 import { InputType, Field, ID, Int } from 'type-graphql';
 import Coupon from './coupon.type';
-import { Product, ProductCreateInput } from '@generated/type-graphql';
+import { Product, ProductCreateInput } from '../../../prisma/generated';
 
 @InputType({ description: 'New coupon data' })
 export default class AddCouponInput implements Partial<Coupon> {
