@@ -7,7 +7,7 @@
     "build": "rimraf dist && mkdir dist && tsc -b && copyfiles -u 1 src/ dist/",
     "serve": "cross-env NODE_ENV=production node dist/server.admin.js",
     "start": "cross-env NODE_ENV=production node dist/server.shop.js"
-  },
+  }, 
   "dependencies": {
     "@prisma/cli": "~2.10.1",
     "@prisma/client": "~2.10.1",
