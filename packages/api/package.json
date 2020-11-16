@@ -4,7 +4,7 @@
   "scripts": {
     "shop-dev": "ts-node-dev --respawn server.shop.ts",
     "admin": "ts-node-dev --respawn server.admin.ts",
-    "build": "prisma generate && rimraf dist && mkdir dist && tsc -b && copyfiles -u 1 src/ dist/",
+    "build": "rimraf dist && mkdir dist && tsc -b && copyfiles -u 1 src/ dist/",
     "serve": "cross-env NODE_ENV=production node dist/server.admin.js",
     "start": "cross-env NODE_ENV=production node dist/server.shop.js"
   }, 
