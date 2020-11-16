@@ -26,6 +26,7 @@ const CheckoutPage: NextPage<Props> = ({ deviceType }) => {
 
   return ( 
     <>
+    
       <SEO title="Checkout - PickBazar" description="Checkout Details" />
       <ProfileProvider initData={data.me}>
         <Modal> 

@@ -23,6 +23,7 @@ function App() {
   const engine = new Styletron();
 
   return (
+    
     <ApolloProvider client={client as any}>
       <StyletronProvider value={engine}>
         <BaseProvider theme={theme}>
