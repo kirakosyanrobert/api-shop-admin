@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
-import { PrismaClient } from './node_modules/.prisma/client'
+import { PrismaClient } from '.prisma/client'
  
 import { UserResolver } from './shop/services/user/user.resolver';
 import { ProductResolver } from './shop/services/product/product.resolver';
