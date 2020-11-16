@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from './node_modules/.prisma/client'
  
 import { UserResolver } from './shop/services/user/user.resolver';
 import { ProductResolver } from './shop/services/product/product.resolver';
@@ -11,7 +11,7 @@ import { OrderResolver } from './shop/services/order/order.resolver';
 import { CouponResolver } from './shop/services/coupon/coupon.resolver';
 import { CategoryResolver } from './shop/services/category/category.resolver';
 import { VendorResolver } from './shop/services/vendors/vendors.resolver';
-import { Context } from './types';
+import { Context } from './types'; 
 
 import { 
   UserRelationsResolver,
