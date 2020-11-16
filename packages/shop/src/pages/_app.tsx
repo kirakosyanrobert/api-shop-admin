@@ -28,6 +28,8 @@ import 'typeface-lato';
 import 'typeface-poppins';
 
 const AppLayout = dynamic(() => import('layouts/app-layout'));
+  
+
 
 export default function ExtendedApp({ Component, pageProps }) {
   const mobile = useMedia('(max-width: 580px)');
