@@ -17,7 +17,7 @@ export default class ProductResolver {
     @Args()
     { limit, offset, sortByPrice, type, searchText, category }: GetProductsArgs
   ): Promise<ProductsConnection> {
-    let products = await prisma.product.findMany({
+    let products: Product[] = await prisma.product.findMany({
       include: {
         categories: true,
         meta: true,
@@ -28,7 +28,7 @@ export default class ProductResolver {
  
     if (category) {
       products = products.filter((product) =>
-        product.categories.find(
+        product?.categories?.find(
           (category_item) => category_item.slug === category
         )
       );
