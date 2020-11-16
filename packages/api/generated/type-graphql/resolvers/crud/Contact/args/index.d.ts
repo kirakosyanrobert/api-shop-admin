@@ -1,0 +1,10 @@
+export { AggregateContactArgs } from "./AggregateContactArgs";
+export { CreateContactArgs } from "./CreateContactArgs";
+export { DeleteContactArgs } from "./DeleteContactArgs";
+export { DeleteManyContactArgs } from "./DeleteManyContactArgs";
+export { FindFirstContactArgs } from "./FindFirstContactArgs";
+export { FindManyContactArgs } from "./FindManyContactArgs";
+export { FindOneContactArgs } from "./FindOneContactArgs";
+export { UpdateContactArgs } from "./UpdateContactArgs";
+export { UpdateManyContactArgs } from "./UpdateManyContactArgs";
+export { UpsertContactArgs } from "./UpsertContactArgs";

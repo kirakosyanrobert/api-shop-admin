@@ -1,0 +1,34 @@
+import { AuthorRelationFilter } from "../inputs/AuthorRelationFilter";
+import { CategoryListRelationFilter } from "../inputs/CategoryListRelationFilter";
+import { DateTimeFilter } from "../inputs/DateTimeFilter";
+import { EnumProductTypeFilter } from "../inputs/EnumProductTypeFilter";
+import { GalleryListRelationFilter } from "../inputs/GalleryListRelationFilter";
+import { IntFilter } from "../inputs/IntFilter";
+import { IntNullableFilter } from "../inputs/IntNullableFilter";
+import { MetaRelationFilter } from "../inputs/MetaRelationFilter";
+import { StringFilter } from "../inputs/StringFilter";
+export declare class ProductWhereInput {
+    AND?: ProductWhereInput[] | undefined;
+    OR?: ProductWhereInput[] | undefined;
+    NOT?: ProductWhereInput[] | undefined;
+    id?: StringFilter | undefined;
+    createdAt?: DateTimeFilter | undefined;
+    updatedAt?: DateTimeFilter | undefined;
+    slug?: StringFilter | undefined;
+    title?: StringFilter | undefined;
+    description?: StringFilter | undefined;
+    unit?: StringFilter | undefined;
+    image?: StringFilter | undefined;
+    price?: IntFilter | undefined;
+    salePrice?: IntFilter | undefined;
+    discountInPercent?: IntFilter | undefined;
+    per_unit?: IntFilter | undefined;
+    quantity?: IntFilter | undefined;
+    views?: IntNullableFilter | undefined;
+    sales?: IntNullableFilter | undefined;
+    type?: EnumProductTypeFilter | undefined;
+    author?: AuthorRelationFilter | undefined;
+    meta?: MetaRelationFilter | undefined;
+    gallery?: GalleryListRelationFilter | undefined;
+    categories?: CategoryListRelationFilter | undefined;
+}

@@ -1,6 +1,6 @@
 import { Resolver, Query, Arg, ID, Mutation, Ctx } from 'type-graphql';
 
-import { Category, CategoryCreateWithoutProductInput } from '@generated/type-graphql';
+import { Category, CategoryCreateWithoutProductInput } from '../../../generated/type-graphql';
  
 import search from '../../helpers/search';
 import { Context } from '../../../types';

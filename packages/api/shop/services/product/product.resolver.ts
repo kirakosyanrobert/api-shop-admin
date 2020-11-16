@@ -7,7 +7,7 @@ import {
   Product,
   ProductType,
   ProductCreateOneWithoutCategoriesInput
- } from '@generated/type-graphql';
+ } from '../../../generated/type-graphql';
 import { Context } from '../../../types';
 
     

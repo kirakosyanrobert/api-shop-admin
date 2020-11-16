@@ -1,0 +1,10 @@
+export { AggregateSocialArgs } from "./AggregateSocialArgs";
+export { CreateSocialArgs } from "./CreateSocialArgs";
+export { DeleteManySocialArgs } from "./DeleteManySocialArgs";
+export { DeleteSocialArgs } from "./DeleteSocialArgs";
+export { FindFirstSocialArgs } from "./FindFirstSocialArgs";
+export { FindManySocialArgs } from "./FindManySocialArgs";
+export { FindOneSocialArgs } from "./FindOneSocialArgs";
+export { UpdateManySocialArgs } from "./UpdateManySocialArgs";
+export { UpdateSocialArgs } from "./UpdateSocialArgs";
+export { UpsertSocialArgs } from "./UpsertSocialArgs";

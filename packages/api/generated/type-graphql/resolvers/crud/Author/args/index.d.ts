@@ -1,0 +1,10 @@
+export { AggregateAuthorArgs } from "./AggregateAuthorArgs";
+export { CreateAuthorArgs } from "./CreateAuthorArgs";
+export { DeleteAuthorArgs } from "./DeleteAuthorArgs";
+export { DeleteManyAuthorArgs } from "./DeleteManyAuthorArgs";
+export { FindFirstAuthorArgs } from "./FindFirstAuthorArgs";
+export { FindManyAuthorArgs } from "./FindManyAuthorArgs";
+export { FindOneAuthorArgs } from "./FindOneAuthorArgs";
+export { UpdateAuthorArgs } from "./UpdateAuthorArgs";
+export { UpdateManyAuthorArgs } from "./UpdateManyAuthorArgs";
+export { UpsertAuthorArgs } from "./UpsertAuthorArgs";

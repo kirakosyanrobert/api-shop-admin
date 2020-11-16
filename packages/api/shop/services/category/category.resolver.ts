@@ -1,6 +1,6 @@
 import { Resolver, Query, Arg, ID, Ctx } from 'type-graphql';
 
-import { Category } from '@generated/type-graphql';
+import { Category } from '../../../generated/type-graphql';
 import { Context } from '../../../types';
  
 @Resolver()
