@@ -68,7 +68,14 @@ const main = async () => {
     context: (): Context => ({ prisma }),
   }); 
 
-  apolloServer.applyMiddleware({ app, path });
+
+  // CORS configuration
+  const cors = {
+    origin: 'http://localhost:3000',
+    credentials: true
+  }
+
+  apolloServer.applyMiddleware({ app, path, cors });
 
   app.listen(PORT, () => {
     console.log(`🚀 started http://localhost:${PORT}${path}`);
