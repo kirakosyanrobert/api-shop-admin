@@ -3,5 +3,13 @@
     "env": {
       "REACT_APP_API_URL": "https://api.kirakosyanrobert.vercel.app/admin/graphql"
     }
-  }
+  },
+  "headers": [
+    {
+      "headers": [
+        { "key": "Access-Control-Allow-Credentials", "value": "true" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ]
 }

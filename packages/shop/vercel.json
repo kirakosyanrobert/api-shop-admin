@@ -4,5 +4,13 @@
       "NEXT_PUBLIC_STRIPE_PUBLIC_KEY": "put_your_stripe_public_key_here",
       "NEXT_PUBLIC_GRAPHQL_API_ENDPOINT": "https://api.kirakosyanrobert.vercel.app/shop/graphql"
     }
-  }
+  },
+  "headers": [
+    {
+      "headers": [
+        { "key": "Access-Control-Allow-Credentials", "value": "true" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ]
 }

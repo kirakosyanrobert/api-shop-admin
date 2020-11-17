@@ -16,10 +16,7 @@ import DemoSwitcher from 'components/DemoSwitcher/SwitcherBtn';
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_API_URL,
-  cache: new InMemoryCache(),
-  headers: {
-    "Access-Control-Allow-Origin": "*",
-  }
+  cache: new InMemoryCache()
 });
 
 function App() {
