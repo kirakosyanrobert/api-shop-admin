@@ -69,13 +69,8 @@ const main = async () => {
   }); 
 
 
-  // CORS configuration
-  const cors = {
-    origin: 'http://localhost:3000',
-    credentials: true
-  }
-
-  apolloServer.applyMiddleware({ app, path, cors });
+ 
+  apolloServer.applyMiddleware({ app, path, cors: false });
 
   app.listen(PORT, () => {
     console.log(`🚀 started http://localhost:${PORT}${path}`);
