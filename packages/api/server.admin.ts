@@ -70,7 +70,7 @@ const main = async () => {
 
 
  
-  apolloServer.applyMiddleware({ app, path, cors: false });
+  apolloServer.applyMiddleware({ app, path });
 
   app.listen(PORT, () => {
     console.log(`🚀 started http://localhost:${PORT}${path}`);
