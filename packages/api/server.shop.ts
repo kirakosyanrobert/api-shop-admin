@@ -24,7 +24,7 @@ import {
   SocialRelationsResolver,
   AuthorRelationsResolver,
   GalleryRelationsResolver
-} from './generated/type-graphql';
+} from '@generated/type-graphql';
 
 const app: express.Application = express();
 const path = '/shop/graphql';

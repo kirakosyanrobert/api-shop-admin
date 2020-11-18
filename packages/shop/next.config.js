@@ -11,19 +11,7 @@ const nextConfig = {
         permanent: true,
       },
     ];
-  },
-  async headers() {
-    return [
-      {
-        // matching all API routes
-        source: 'https://api.kirakosyanrobert.vercel.app/shop/graphql',
-        headers: [
-          { key: 'Access-Control-Allow-Credentials', value: 'true' },
-          { key: 'Access-Control-Allow-Origin', value: '*' },
-        ],
-      },
-    ];
-  },
+  }
 };
 
 module.exports = withPlugins([withOptimizedImages], nextConfig);

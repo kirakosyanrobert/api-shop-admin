@@ -1,1 +1,0 @@
-export { AuthorSocialsArgs } from "./AuthorSocialsArgs";

@@ -1,5 +1,5 @@
 import { ObjectType, Field } from 'type-graphql';
-import {Category, ProductType} from '../../../generated/type-graphql';
+import {Category, ProductType} from '@generated/type-graphql';
 
 @ObjectType()
 export default class OrderProduct {
